@@ -3,7 +3,7 @@ import { Card, Header, Container, Image, Dimmer, Loader } from 'semantic-ui-reac
 import axios from 'axios';
 
 class Houses extends React.Component {
-  state = { filtered: [], page: 1, isLoaded: false }
+  state = { isLoaded: false, filtered: [], page: 1, isLoaded: false }
   
 
   componentDidMount() {
@@ -28,6 +28,7 @@ class Houses extends React.Component {
     return (
       <Fragment>
         <Header as='h1'>Game of Thrones Houses that Matter</Header>
+        {this.state.isLoaded ? 
         <Card.Group itemsPerRow={6}>
           {filtered.map( house  => (
             <Card>
@@ -37,6 +38,8 @@ class Houses extends React.Component {
             </Card>
           ))}
         </Card.Group>
+        : <Loader />
+        }
       </Fragment>
     )
   }

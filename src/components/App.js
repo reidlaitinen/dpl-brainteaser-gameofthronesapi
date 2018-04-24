@@ -14,7 +14,7 @@ class App extends Component {
         <NavBar />
         <Flash />
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' component={Houses} />
             <Route exact path='/houses' component={Houses} />
             <Route component={NoMatch} />
           </Switch>
