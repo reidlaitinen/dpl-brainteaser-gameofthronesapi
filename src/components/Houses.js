@@ -38,7 +38,7 @@ class Houses extends React.Component {
             </Card>
           ))}
         </Card.Group>
-        : <Loader />
+        : <Loader active={true} />
         }
       </Fragment>
     )
