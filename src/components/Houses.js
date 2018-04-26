@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Card, Header, Container, Image, Dimmer, Loader } from 'semantic-ui-react';
 import axios from 'axios';
+import crc from 'crc';
 
 class Houses extends React.Component {
   state = { isLoaded: false, filtered: [], page: 1, isLoaded: false }
@@ -8,6 +9,17 @@ class Houses extends React.Component {
 
   componentDidMount() {
     let filtered = [];
+
+    let questionImage;
+    let questionCRC;
+
+    axios.get('https://api.got.show/api/houses/misc/images/houses/House_Farwynd.png')
+      .then( res => { 
+        questionImage = res.data;
+        questionCRC = crc.crc32(questionImage).toString(16)
+      } )
+      console.log(questionCRC)
+
     axios.get('https://api.got.show/api/houses/')
       .then( res => { res.data.map( house => {
         (house.imageLink) ? filtered.push(house) : null;
